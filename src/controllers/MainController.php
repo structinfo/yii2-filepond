@@ -53,10 +53,17 @@ class MainController extends Controller
 
         $file = UploadedFile::getInstanceByName($fileName);
 
-        $filePath = \Yii::$app->security->generateRandomString();
-        FileHelper::createDirectory($this->module->basePath . $filePath);
+        $folderName = \Yii::$app->security->generateRandomString();
+        FileHelper::createDirectory($this->module->basePath . $folderName);
 
-        $file->saveAs($this->module->basePath . $filePath . '/' . $file->name);
+        $filePath = $folderName . '/' . $file->name;
+
+        $file->saveAs($this->module->basePath . $filePath);
+
+        // TODO: support save to different folders (pass name of preset via client)
+
+        // TODO: add file to redis and remove on file path save to DB.
+        // TODO: Remove files listed in Redis if they were not saved to DB for 1 month
 
         return $filePath;
     }
