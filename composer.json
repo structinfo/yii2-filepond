@@ -1,5 +1,5 @@
 {
-  "name": "vkabachenko/yii2-filepond",
+  "name": "structinfo/yii2-filepond",
   "description": "Yii2 upload file module based on filepond js library",
   "keywords": ["yii", "upload", "file", "filepond"],
   "type": "yii2-extension",
